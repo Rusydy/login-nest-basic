@@ -26,7 +26,7 @@ export class UsersService {
     email: string,
     password: string // I'll use it after auth done
   ) {
-    let user = await this.userModel.findOne({email: email}).exec()
+    let user = await this.userModel.findOne({email: email, password: password}).exec()
     return user
   }
 

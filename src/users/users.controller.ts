@@ -41,10 +41,16 @@ export class UsersController {
       userEmail,
       userPass
     )
-    return{
-      statusCode: HttpStatus.OK,
-      message: "login success!",
-      data: user
-    }
+    if (user != null)
+      return{
+        statusCode: HttpStatus.OK,
+        message: "login success!",
+        data: user
+      }
+    else
+      return {
+        statusCode: HttpStatus.NOT_FOUND,
+        message: "login again!"
+      }
   }
 }
