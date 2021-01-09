@@ -1,4 +1,5 @@
 import { Body, Controller, Get, HttpStatus, Post } from '@nestjs/common'
+import { LoginUserDto } from './dto/login-user.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -25,6 +26,22 @@ export class UsersController {
       userPass
     )
     return {
+      statusCode: HttpStatus.OK,
+      message: "register success!",
+      data: user
+    }
+  }
+
+  @Post('login')
+  async login(
+    @Body('email') userEmail: string,
+    @Body('password') userPass: string
+  ) {
+    const user = await this.userService.login(
+      userEmail,
+      userPass
+    )
+    return{
       statusCode: HttpStatus.OK,
       message: "login success!",
       data: user

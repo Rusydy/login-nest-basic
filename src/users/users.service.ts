@@ -22,6 +22,14 @@ export class UsersService {
     return result
   }
 
+  async login(
+    email: string,
+    password: string // I'll use it after auth done
+  ) {
+    let user = await this.userModel.findOne({email: email}).exec()
+    return user
+  }
+
   async getUsers() {
     const users = await this.userModel.find().exec()
     return users.map(user => ({
