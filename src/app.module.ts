@@ -3,8 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AlienUserController } from './alien-user/alien-user.controller';
-import { AlienUserService } from './alien-user/alien-user.service';
+// import { AlienUserController } from './alien-user/alien-user.controller';
+// import { AlienUserService } from './alien-user/alien-user.service';
 import { AlienUserModule } from './alien-user/alien-user.module';
 
 @Module({
