@@ -1,27 +1,28 @@
 import { Body, Controller, Get, HttpStatus, Post } from '@nestjs/common'
 import { LoginUserDto } from './dto/login-user.dto';
-import { UsersService } from './users.service';
+import { AlienUserService } from './alien-user.service';
 
-@Controller('users')
-export class UsersController {
-  constructor(private userService:UsersService){}
+
+@Controller('alienusers')
+export class AlienUserController {
+  constructor(private AlienUserService:AlienUserService){}
   
   @Get()
   async getUsers(){
-    const users = await this.userService.getUsers()
+    const users = await this.AlienUserService.getUsers()
     return users
   }
 
-  @Post('/human/register')
+  @Post('/alien/register')
   async createUser(
     @Body('name') userName: string,
-    @Body('gender') userGender: number,
+    @Body('type') userType: number,
     @Body('email') userEmail: string,
     @Body('password') userPass: string
   ){
-    const user = await this.userService.createUser(
+    const user = await this.AlienUserService.createUser(
       userName,
-      userGender,
+      userType,
       userEmail,
       userPass
     )
@@ -32,12 +33,12 @@ export class UsersController {
     }
   }
 
-  @Post('human/login')
+  @Post('alien/login')
   async login(
     @Body('email') userEmail: string,
     @Body('password') userPass: string
   ) {
-    const user = await this.userService.login(
+    const user = await this.AlienUserService.login(
       userEmail,
       userPass
     )

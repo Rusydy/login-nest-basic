@@ -1,22 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { HumanUser } from './interfaces/human-user.interface';
+import { AlienUser } from './interfaces/alien-user.interface';
 // import { User } from './interfaces/user.interface';
 
 @Injectable()
-export class UsersService {
-  constructor(@InjectModel('HumanUser') private readonly userModel: Model<HumanUser>) {}
-  // constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
+export class AlienUserService {
+  constructor(@InjectModel('AlienUser') private readonly userModel: Model<AlienUser>) {}
 
   async createUser(
     name: string,
-    gender: number,
+    type: number,
     email: string,
     password: string) {
     const newUser = new this.userModel({
       name,
-      gender,
+      type,
       email,
       password
     })
@@ -37,7 +36,7 @@ export class UsersService {
     return users.map(user => ({
       id: user.id,
       name: user.name,
-      gender: user.gender,
+      type: user.type,
       email: user.email,
       password: user.password
     }))
