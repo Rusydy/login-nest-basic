@@ -9,7 +9,7 @@ import { AlienUserModule } from './alien-user/alien-user.module';
 
 @Module({
   imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost/login-test-crud'), AlienUserModule],
-  controllers: [AppController, AlienUserController],
-  providers: [AppService, AlienUserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
