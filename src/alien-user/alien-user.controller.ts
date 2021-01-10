@@ -3,7 +3,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { AlienUserService } from './alien-user.service';
 
 
-@Controller('alienusers')
+@Controller('users')
 export class AlienUserController {
   constructor(private AlienUserService:AlienUserService){}
   
